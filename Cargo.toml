@@ -1,0 +1,37 @@
+[package]
+name = "solaris"
+version = "alpha-0.0.1"
+edition = "2021"
+authors = ["viniciusf-dev"]
+description = "A fast and minimalist vector database built in Rust"
+license = "MIT"
+repository = "https://github.com/viniciusf-dev"
+
+[dependencies]
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+thiserror = "1.0"
+anyhow = "1.0"
+rayon = "1.7"
+clap = { version = "4.3", features = ["derive"] }
+env_logger = "0.10"
+log = "0.4"
+
+[dev-dependencies]
+criterion = "0.5"
+tempfile = "3.7"
+rand = "0.8"
+
+[[bench]]
+name = "vector_search"
+harness = false
+
+[features]
+default = []
+persistence = []
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+panic = "abort"
