@@ -141,4 +141,6 @@ impl PersistentStorage {
         }
 
         writer.flush()?;
-        Ok(written
+        Ok(written)
+    }
+}
